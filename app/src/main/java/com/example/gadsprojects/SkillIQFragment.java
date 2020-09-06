@@ -7,7 +7,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +28,7 @@ import retrofit2.Response;
 public class SkillIQFragment extends Fragment {
 
     private RecyclerView recyclerView;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
 
     LearnersAdapter learnersAdapter;
     ViewGroup root;
@@ -51,6 +54,22 @@ public class SkillIQFragment extends Fragment {
 
         // Inflate the layout for this fragment
         root = (ViewGroup) inflater.inflate(R.layout.fragment_skill_i_q, null);
+
+        mSwipeRefreshLayout = root.findViewById(R.id.swiperefresh_items);
+        mSwipeRefreshLayout.setOnRefreshListener(() -> {
+
+            getAllUsers();
+
+            final Handler handler = new Handler();
+            handler.postDelayed(() -> {
+                if(mSwipeRefreshLayout.isRefreshing()) {
+                    mSwipeRefreshLayout.setRefreshing(false);
+                }
+            }, 1000);
+
+        });
+
+
         return root;
 
 

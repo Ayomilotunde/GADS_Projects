@@ -12,9 +12,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -30,21 +32,17 @@ public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
 
 
-    RecyclerView recyclerView;
-
-    LearnersAdapter learnersAdapter;
-
     private ViewPager viewPager;
     private TabLayout tabLayout;
 
     private LearningFragment learningFragment;
     private SkillIQFragment skillIQFragment;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
 
         toolbar = findViewById(R.id.toolbar);
@@ -56,16 +54,20 @@ public class MainActivity extends AppCompatActivity {
         learningFragment = new LearningFragment();
         skillIQFragment = new SkillIQFragment();
 
+
         tabLayout.setupWithViewPager(viewPager);
 
         ViewPagerAdapter viewpageradapter = new ViewPagerAdapter(getSupportFragmentManager(), 0);
         viewpageradapter.addFragment(learningFragment, "Learning Leaders");
-        viewPager.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
         viewpageradapter.addFragment(skillIQFragment, "Skill IQ Leaders");
         viewPager.setAdapter(viewpageradapter);
 
 
+    }
 
+    public void submitActivity(View view) {
+        Intent intent = new Intent(this, SubmissionActivity.class);
+        startActivity(intent);
     }
 
     private class ViewPagerAdapter extends FragmentPagerAdapter {

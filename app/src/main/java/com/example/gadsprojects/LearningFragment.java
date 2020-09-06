@@ -1,5 +1,6 @@
 package com.example.gadsprojects;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 
@@ -17,6 +18,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -34,7 +36,7 @@ public class LearningFragment extends Fragment {
 
     Toolbar toolbar;
 
-
+    ProgressDialog progressDialog;
     private RecyclerView recyclerView;
 
     LearnersAdapter learnersAdapter;
@@ -45,12 +47,12 @@ public class LearningFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        progressDialog = new ProgressDialog(getContext());
+        progressDialog.setMessage("Loading...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
 
 
-       /* recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL));
-*/
         getAllUsers();
     }
 
@@ -58,55 +60,50 @@ public class LearningFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-//         recyclerView = getView().findViewById(R.id.recyclerview);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-//        recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL));
+
         // Inflate the layout for this fragment
+
+
         root = (ViewGroup) inflater.inflate(R.layout.fragment_learning, null);
         return root;
-
-
-
-
 
 
     }
 
     private void generateDataList(List<Learners> learnerslist) {
         recyclerView = (RecyclerView) root.findViewById(R.id.recyclerview);
+
         learnersAdapter = new LearnersAdapter(getContext(), learnerslist);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(learnersAdapter);
     }
 
-    public void getAllUsers(){
+    public void getAllUsers() {
+
 
         LearnersService service = ApiClient.getRetrofitInstance().create(LearnersService.class);
         Call<List<Learners>> call = service.getTopHoursLearners();
-       // Call<List<Learners>> userlist = ApiClient.getUserService().getAllUsers();
 
         call.enqueue(new Callback<List<Learners>>() {
             @Override
             public void onResponse(@NotNull Call<List<Learners>> call, @NotNull Response<List<Learners>> response) {
 
 
-                if(response.body() != null) {
+                if (response.body() != null) {
+
+                    progressDialog.dismiss();
                     generateDataList(response.body());
+
+
                 }
 
-
-//                if(response.isSuccessful()){
-//                    List<Learners> learners = response.body();
-//                    learnersAdapter.setData(learners);
-//                    recyclerView.setAdapter(learnersAdapter);
-//
-//                }
 
             }
 
             @Override
             public void onFailure(Call<List<Learners>> call, Throwable t) {
+                progressDialog.dismiss();
                 Log.e("failure", Objects.requireNonNull(t.getLocalizedMessage()));
 
             }

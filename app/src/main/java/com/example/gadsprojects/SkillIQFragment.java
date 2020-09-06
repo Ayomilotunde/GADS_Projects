@@ -54,10 +54,6 @@ public class SkillIQFragment extends Fragment {
         return root;
 
 
-
-
-
-
     }
 
     private void generateDataList(List<Learners> learnerslist) {
@@ -68,7 +64,7 @@ public class SkillIQFragment extends Fragment {
         recyclerView.setAdapter(learnersAdapter);
     }
 
-    public void getAllUsers(){
+    public void getAllUsers() {
 
         LearnersService service = ApiClient.getRetrofitInstance().create(LearnersService.class);
         Call<List<Learners>> call = service.getTopSkillIQLearners();
@@ -79,10 +75,9 @@ public class SkillIQFragment extends Fragment {
             public void onResponse(@NotNull Call<List<Learners>> call, @NotNull Response<List<Learners>> response) {
 
 
-                if(response.body() != null) {
+                if (response.body() != null) {
                     generateDataList(response.body());
                 }
-
 
 
             }

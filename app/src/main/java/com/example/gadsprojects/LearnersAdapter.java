@@ -15,7 +15,7 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-public class LearnersAdapter extends  RecyclerView.Adapter<LearnersAdapter.LearnersAdapterVH>  {
+public class LearnersAdapter extends RecyclerView.Adapter<LearnersAdapter.LearnersAdapterVH> {
 
     private List<Learners> LearnersList;
     private Context context;
@@ -26,12 +26,11 @@ public class LearnersAdapter extends  RecyclerView.Adapter<LearnersAdapter.Learn
     }
 
 
-
     @NonNull
     @Override
     public LearnersAdapterVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         context = parent.getContext();
-        return new LearnersAdapter.LearnersAdapterVH(LayoutInflater.from(context).inflate(R.layout.data_row,parent,false));
+        return new LearnersAdapter.LearnersAdapterVH(LayoutInflater.from(context).inflate(R.layout.data_row, parent, false));
     }
 
     @SuppressLint("SetTextI18n")
@@ -43,8 +42,8 @@ public class LearnersAdapter extends  RecyclerView.Adapter<LearnersAdapter.Learn
         String username = userResponse.getName();
         String country = userResponse.getCountry();
         String image = userResponse.getBadgeUrl();
-        String hours = userResponse.getHours()+"";//learning hours,
-        String scores = userResponse.getScore()+"";// " Skill IQ Score,
+        String hours = userResponse.getHours() + "";//learning hours,
+        String scores = userResponse.getScore() + "";// " Skill IQ Score,
 
 
         holder.username.setText(username);
@@ -56,12 +55,12 @@ public class LearnersAdapter extends  RecyclerView.Adapter<LearnersAdapter.Learn
                 .load(image)
                 .into(holder.imageMore);
 
-        if (scores.equals("null")){
+        if (scores.equals("null")) {
             holder.hours.setText(hours + " learning hours,");
-        }if (hours.equals("null")) {
+        }
+        if (hours.equals("null")) {
             holder.scores.setText(scores + " Skill IQ Score,");
         }
-
 
 
     }
@@ -83,8 +82,6 @@ public class LearnersAdapter extends  RecyclerView.Adapter<LearnersAdapter.Learn
             scores = itemView.findViewById(R.id.scores);
             country = itemView.findViewById(R.id.country);
             imageMore = itemView.findViewById(R.id.imageMore);
-
-
 
 
         }

@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Learners implements Serializable {
 
-    public Integer hours,score;
+    public Integer hours, score;
     private int id;
     public String name;
     public String country;

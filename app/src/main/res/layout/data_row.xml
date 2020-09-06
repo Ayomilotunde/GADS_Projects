@@ -55,7 +55,6 @@
                     android:layout_marginTop="24dp"
                     android:gravity="center_vertical"
                     android:text="Name"
-                    android:textColor="@color/headerColor"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -77,7 +76,6 @@
                         android:id="@+id/hours"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/headerColor"
                         android:textSize="16sp"
                         android:visibility="visible" />
 
@@ -85,7 +83,6 @@
                         android:id="@+id/scores"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/headerColor"
                         android:textSize="16sp"
                         android:visibility="visible" />
                 </RelativeLayout>
@@ -100,7 +97,6 @@
                     android:layout_marginTop="8dp"
                     android:text="larntech"
 
-                    android:textColor="@color/headerColor"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/relativeLayout"

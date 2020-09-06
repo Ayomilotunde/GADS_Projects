@@ -8,7 +8,7 @@
     tools:context=".SplashActivity">
 
     <ImageView
-        android:layout_width="260dp"
+        android:layout_width="280dp"
         android:layout_height="400dp"
         android:src="@drawable/gads"
         app:layout_constraintBottom_toBottomOf="parent"

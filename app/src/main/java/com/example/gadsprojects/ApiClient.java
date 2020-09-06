@@ -6,8 +6,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ApiClient {
 
 
-
-
     private static final String BASE_URL = "https://gadsapi.herokuapp.com";
     private static Retrofit retrofit;
 

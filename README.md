@@ -1,3 +1,26 @@
 # GADS_Projects
 Practice Project
-x-special/nautilus-clipboard
+
+### Screenshots
+| ------ | ------ | ------ |
+| <img src="Screenshot_20200908-043503.png" width="100%" height="25%"> | 
+
+| ------ | ------ | ------ |
+| <img src="Screenshot_20200908-043631.png" width="100%" height="25%"> | 
+
+
+| ------ | ------ | ------ |
+| <img src="Screenshot_20200908-043638.png" width="100%" height="25%"> |
+
+
+| ------ | ------ | ------ |
+| <img src="Screenshot_20200908-043646.png" width="100%" height="25%">
+
+| ------ | ------ | ------ |
+| <img src="Screenshot_20200908-043754.png" width="100%" height="25%">
+
+| ------ | ------ | ------ |
+| <img src="Screenshot_20200908-043843.png" width="100%" height="25%">
+
+| ------ | ------ | ------ |
+| <img src="Screenshot_20200908-043851.png" width="100%" height="25%">

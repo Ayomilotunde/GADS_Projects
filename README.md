@@ -3,7 +3,7 @@ Practice Project
 
 ### Screenshots
 | ------ | ------ | ------ |
-| <img src="Screenshot_20200908-043503.png" width="100%" height="25%"> | 
+| <img src="Screenshot_20200908-043503.png" width="50%" height="10%"> | 
 
 | ------ | ------ | ------ |
 | <img src="Screenshot_20200908-043631.png" width="100%" height="25%"> | 

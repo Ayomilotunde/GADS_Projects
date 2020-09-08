@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#fff</color>
     <color name="colorPrimaryDark">#000</color>
-    <color name="colorAccent">#FFAB40</color>
+    <color name="colorAccent">#fff</color>
 
     <!--text color -->
     <color name="textColor">#273d52</color>

@@ -40,7 +40,7 @@ public class SubmissionActivity extends AppCompatActivity {
     private String Email, FirstName, LastName, Link;
 
 
-    static final String BASE_FORMS_URL = "https://docs.google.com/forms/d/e/";          //GADS forms
+    static final String BASE_FORMS_URL = "https://docs.google.com/forms/d/e/"; //GADS forms
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,12 +72,17 @@ public class SubmissionActivity extends AppCompatActivity {
 
 
     public void Submit(View view) {
+
+
+
         if (firstName.getText().toString().isEmpty()
                 || lastName.getText().toString().isEmpty()
                 || email.getText().toString().isEmpty()
                 || githubLink.getText().toString().isEmpty()) {
             Toast.makeText(this, "All fields are required", Toast.LENGTH_LONG).show();
         } else {
+
+
 
             progressBar.setVisibility(View.VISIBLE);
 
@@ -86,6 +91,12 @@ public class SubmissionActivity extends AppCompatActivity {
             LastName = lastName.getText().toString();
             Email = email.getText().toString();
             Link = githubLink.getText().toString();
+
+            firstName.setVisibility(View.INVISIBLE);
+            lastName.setVisibility(View.INVISIBLE);
+            email.setVisibility(View.INVISIBLE);
+            githubLink.setVisibility(View.INVISIBLE);
+            submit.setVisibility(View.INVISIBLE);
 
             AlertDialog.Builder builder = new AlertDialog.Builder(SubmissionActivity.this, R.style.Theme_MaterialComponents_Light_Dialog_Alert);
             View views = LayoutInflater.from(SubmissionActivity.this).inflate(
@@ -96,13 +107,37 @@ public class SubmissionActivity extends AppCompatActivity {
             alertDialog = builder.create();
             views.findViewById(R.id.yes_button).setOnClickListener(view1 -> {
 
+                progressBar.setVisibility(View.INVISIBLE);
                 cornfirmDialog();
+
 
                 alertDialog.dismiss();
             });
-            views.findViewById(R.id.cancel_btn).setOnClickListener(view12 -> alertDialog.dismiss());
+            views.findViewById(R.id.cancel_btn).setOnClickListener(view12 -> {
+                        alertDialog.dismiss();
+                progressBar.setVisibility(View.INVISIBLE);
+                firstName.setVisibility(View.VISIBLE);
+                lastName.setVisibility(View.VISIBLE);
+                email.setVisibility(View.VISIBLE);
+                githubLink.setVisibility(View.VISIBLE);
+                submit.setVisibility(View.VISIBLE);
+
+                    }
+
+            );
+
             alertDialog.show();
         }
+
+
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        progressBar.setVisibility(View.INVISIBLE);
+        return;
+
     }
 
     public void cornfirmDialog() {
@@ -130,7 +165,15 @@ public class SubmissionActivity extends AppCompatActivity {
                     ImageView image = views.findViewById(R.id.sub_image);
                     image.setImageResource(R.drawable.ic_checked);
                     alertDialog.show();
-                } else {
+
+                    firstName.setVisibility(View.INVISIBLE);
+                    lastName.setVisibility(View.INVISIBLE);
+                    email.setVisibility(View.INVISIBLE);
+                    githubLink.setVisibility(View.INVISIBLE);
+                    submit.setVisibility(View.INVISIBLE);
+                } else
+
+                    {
 
                     progressBar.setVisibility(View.INVISIBLE);
                     AlertDialog.Builder builder = new AlertDialog.Builder(SubmissionActivity.this, R.style.Theme_MaterialComponents_Light_Dialog_Alert);
